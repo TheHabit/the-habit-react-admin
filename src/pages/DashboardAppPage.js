@@ -26,7 +26,7 @@ export default function DashboardAppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> 오늘의 할일 | 관리자 </title>
       </Helmet>
 
       <Container maxWidth="xl">

@@ -1,7 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 // @mui
 import {
   Card,
@@ -22,6 +25,8 @@ import {
   TableContainer,
   TablePagination,
 } from '@mui/material';
+import { SET_PARAM } from '../modules/NavigateParamModule'; 
+
 // components
 import Label from '../components/label';
 import Iconify from '../components/iconify';
@@ -88,9 +93,16 @@ export default function UserPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  // row클릭시 해당 row의 정보
-  const [selectedRow, setSelectedRow] = useState({});
+  const navigate = useNavigate();
   
+  const challengeDetail = useSelector((state) => state.navigateReducer);
+
+  const dispatch = useDispatch();
+
+   // row클릭시 해당 row의 정보 reducer에 저장
+   const selectedRow = (row)=>{ console.log(row)
+    dispatch({type: SET_PARAM, payload: row});
+  };
 
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
@@ -151,16 +163,17 @@ export default function UserPage() {
 
   const isNotFound = !filteredUsers.length && !!filterName;
 
+  useEffect(()=>{console.log(challengeDetail)})
   return (
     <>
       <Helmet>
-        <title> 오늘의 할일 | 회원관리 </title>
+        <title> 오늘의 할일 | 챌린지 관리 </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            회원관리
+            챌린지 관리
           </Typography>
           {/* <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
             New User
@@ -190,8 +203,12 @@ export default function UserPage() {
 
                     return (
                       /// Row클릭 이벤트 확인하는 곳
-                      <TableRow hover key={id} tabIndex={-1} role="checkbox" selected={selectedUser} onClick={() => {setSelectedRow(row)
-                      console.log(selectedRow)}}>
+                      <TableRow hover key={id} tabIndex={-1} role="checkbox" selected={selectedUser} onClick={() => {
+                       selectedRow(row)
+                       navigate(`./${challengeDetail.id}`,{
+                        state:{selectedRow: `${challengeDetail}`}
+                       })
+                      }}>
                         <TableCell padding="checkbox">
                           <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, name)} />
                         </TableCell>
