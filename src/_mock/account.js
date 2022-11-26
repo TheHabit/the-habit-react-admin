@@ -1,9 +1,9 @@
 // ----------------------------------------------------------------------
 
 const account = {
-  displayName: '오늘의 할일',
-  email: 'demo@minimals.cc',
-  photoURL: '/assets/images/avatars/avatar_default.jpg',
+  displayName: 'Re-Mate',
+  email: 'remate@mtvs.co.kr',
+  photoURL: '/assets/user.png',
 };
 
 export default account;

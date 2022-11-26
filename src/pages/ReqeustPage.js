@@ -34,9 +34,10 @@ import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
 // mock
-import USERLIST from '../_mock/user'; // 회원 정보
+// import USERLIST from '../_mock/user'; // 회원 정보
 
 // ----------------------------------------------------------------------
+const USERLIST = [];
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
@@ -167,13 +168,13 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> 오늘의 할일 | 문의 관리 </title>
+        <title> RE-MATE | 독서 모임 관리 </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            문의 관리
+            독서 모임 관리
           </Typography>
           {/* <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
             New User
