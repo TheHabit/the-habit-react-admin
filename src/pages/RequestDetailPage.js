@@ -18,7 +18,7 @@ export default function ChallengeDetailPage(){
     return(
         <>
         <Helmet>
-                <title> 오늘의 할일 | 문의 관리 </title>
+                <title> RE-MATE | 문의 관리 </title>
         </Helmet>
         <Container>
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>

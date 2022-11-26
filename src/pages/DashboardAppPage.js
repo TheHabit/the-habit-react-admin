@@ -26,7 +26,7 @@ export default function DashboardAppPage() {
   return (
     <>
       <Helmet>
-        <title> 오늘의 할일 | 관리자 </title>
+        <title> RE-MATE | 관리자 </title>
       </Helmet>
 
       <Container maxWidth="xl">
