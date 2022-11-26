@@ -18,12 +18,12 @@ export default function ChallengeDetailPage(){
     return(
         <>
         <Helmet>
-                <title> 오늘의 할일 | 챌린지 관리 </title>
+                <title> RE-MATE | 독서 기록 </title>
         </Helmet>
         <Container>
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
             <Typography variant="h4" gutterBottom>
-                챌린지 상세조회 페이지
+                독서 기록 상세조회 페이지
                {`row:${row.id}`}
             </Typography>
             </Stack>
