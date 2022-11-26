@@ -86,7 +86,7 @@ export default function UserPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const [realRowsPerPage, setRealRowsPerPage] = useState(20);
+  const [realRowsPerPage, setRealRowsPerPage] = useState(200);
 
   const [USERLIST, setUserList] = useState([])
 
