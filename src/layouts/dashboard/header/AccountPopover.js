@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover, Badge } from '@mui/material';
@@ -7,13 +8,14 @@ import account from '../../../_mock/account';
 
 import Iconify from '../../../components/iconify';
 
+
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
-  {
-    label: 'Home',
-    icon: 'eva:home-fill',
-  },
+  // {
+  //   label: 'Home',
+  //   icon: 'eva:home-fill',
+  // },
   // {
   //   label: 'Profile',
   //   icon: 'eva:person-fill',
@@ -28,11 +30,17 @@ const MENU_OPTIONS = [
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
+  const navigate = useNavigate();
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
   };
 
+  const logout = () => {
+    setOpen(null);
+    localStorage.clear();
+    navigate('/login');
+  }
   const handleClose = () => {
     setOpen(null);
   };
@@ -86,14 +94,14 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+            {`${account.displayName}`}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {`관리자 계정`}
           </Typography>
         </Box>
 
-        <Divider sx={{ borderStyle: 'dashed' }} />
+        {/* <Divider sx={{ borderStyle: 'dashed' }} /> */}
 
         <Stack sx={{ p: 1 }}>
           {MENU_OPTIONS.map((option) => (
@@ -105,8 +113,8 @@ export default function AccountPopover() {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
-          Logout
+        <MenuItem onClick={logout} sx={{ m: 1 }}>
+          로그아웃
         </MenuItem>
       </Popover>
     </>

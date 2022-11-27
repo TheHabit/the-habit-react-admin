@@ -77,12 +77,23 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   if (disabledLink) {
     return <>{logo}</>;
   }
-
+  /* 
+  if(localStorage.getItem('token') === null){
+    return (
+      <Link to="/" component={RouterLink} sx={{ display: 'contents' }}>
+        {logo}
+      </Link>
+    );
+  } 
+  */
+ 
   return (
-    <Link to="/" component={RouterLink} sx={{ display: 'contents' }}>
+    <div>
       {logo}
-    </Link>
+    </div>
+    
   );
+
 });
 
 Logo.propTypes = {

@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
+
 // @mui
 import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // components
 import Iconify from '../../../components/iconify';
+
 
 // ----------------------------------------------------------------------
 
@@ -15,6 +18,7 @@ export default function LoginForm() {
   const [pwd, setPwd] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
+  let decodeToken = '';
 
   const handleClick = async () => {
     let isSuccess = "";
@@ -30,11 +34,14 @@ export default function LoginForm() {
       })
     }).then(response => response.json())
     .then(res => {
+      decodeToken = jwtDecode(res.data.accessToken);
+      console.log(decodeToken["${security.jwt.authority-type"]);
+      
       localStorage.setItem("token", res.data.accessToken)
       isSuccess = res.status;
     })
 
-    if(isSuccess === 200){
+    if(isSuccess === 200 && decodeToken["${security.jwt.authority-type"] === 'ADMIN'){
       navigate('/dashboard', { replace: true });
     } else{
       alert("로그인에 실패했습니다.");
