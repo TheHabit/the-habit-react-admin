@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 // @mui
 import {
   Card,
@@ -33,10 +34,11 @@ import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
 
 const TABLE_HEAD = [
   { id: 'code', label: 'Code', alignRight: false },
-  { id: 'id', label: 'ID', alignRight: false },
-  { id: 'nickname', label: 'Nickname', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
+  { id: 'bookName', label: '도서명', alignRight: false },
+  { id: 'author', label: '저자', alignRight: false },
+  { id: 'isbn', label: 'ISBN', alignRight: false },
+  { id: 'writer', label: '작성자', alignRight: false },
+  { id: 'rating', label: '평점', alignRight: false },
   // { id: '' },
 ];
 
@@ -66,7 +68,7 @@ function applySortFilter(array, comparator, query) {
     return a[1] - b[1];
   });
   if (query) {
-    return filter(array, (_user) => _user.nickName.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+    return filter(array, (_user) => _user.bookName.toLowerCase().indexOf(query.toLowerCase()) !== -1);
   }
   return stabilizedThis.map((el) => el[0]);
 }
@@ -91,8 +93,9 @@ export default function UserPage() {
 
   // row클릭시 해당 row의 정보
   const [selectedRow, setSelectedRow] = useState({});
-  
 
+  const navigate = useNavigate();
+  
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
   };
@@ -164,11 +167,12 @@ export default function UserPage() {
     .then( res => {
       console.log(res.data);
       const records = res.data.map((user) => ({
-        code : user.memberCode,
-        id: user.memberId,
-        nickName: user.nickName,
-        role: user.memberRole,
-        status: user.isWithDrawal
+        code: user.recordCode,
+        bookName: user.bookName,
+        isbn: user.bookISBN,
+        author: user.bookAuthor,
+        writer: user.name,
+        rating: user.rating
       }))
       console.log(records);
       setUserList(records);
@@ -179,17 +183,23 @@ export default function UserPage() {
 
   }, []);
 
+  // const onClickRecordHandler = () => {
+  //   navigate(`/dashboard/records/${row.code}`, { replace: true });
+  //   setSelectedRow(row);
+  //   console.log(selectedRow);
+  // }
+
   return (
     USERLIST[0]&& USERLIST[0].code && (
     <>
       <Helmet>
-        <title> RE-MATE | 회원 관리 </title>
+        <title> RE-MATE | 독서 기록 관리 </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            회원 목록
+            독서 기록 관리
           </Typography>
           {/* <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
             New User
@@ -197,7 +207,7 @@ export default function UserPage() {
         </Stack>
 
         <Card>
-          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
+          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} placeholder={"도서명으로 검색하기"} />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
@@ -214,13 +224,17 @@ export default function UserPage() {
                 <TableBody>
                   {/* filteredUsers? userList에 값을 넣어야함. */}
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { code, id, nickName, role, status } = row;
+                    const { code, bookName, author, isbn, writer, rating } = row;
                     const selectedUser = selected.indexOf(code) !== -1;
 
                     return (
                       /// Row클릭 이벤트 확인하는 곳
-                      <TableRow hover key={id} tabIndex={-1} role="checkbox" selected={selectedUser} onClick={() => {setSelectedRow(row)
-                      console.log(selectedRow)}}>
+                      <TableRow hover key={code} tabIndex={-1} role="checkbox" selected={selectedUser} onClick={ () => {
+                        const recordCode = row.code
+                        navigate(`/dashboard/records/${recordCode}`, {state : recordCode});
+                        setSelectedRow(row);
+                        console.log(selectedRow);
+                      }}>
                         {/* <TableCell padding="checkbox">
                           <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, name)} />
                         </TableCell> */}
@@ -234,16 +248,20 @@ export default function UserPage() {
                         </TableCell> */}
                         <TableCell align="left">{code}</TableCell>
 
-                        <TableCell align="left">{id}</TableCell>
+                        <TableCell align="left">{bookName}</TableCell>
 
-                        <TableCell align="left">{nickName}</TableCell>
+                        <TableCell align="left">{author}</TableCell>
 
-                        <TableCell align="left">{role}</TableCell>
+                        <TableCell align="left">{isbn}</TableCell>
 
-                        <TableCell align="left">
-                          {/* <Label color={(status === 'banned' && 'error') || 'success'}>{sentenceCase(status)}</Label> */}
+                        <TableCell align="left">{writer}</TableCell>
+
+                        <TableCell align="left">{rating}</TableCell>
+
+                        {/* <TableCell align="left">
+                          <Label color={(status === 'banned' && 'error') || 'success'}>{sentenceCase(status)}</Label>
                           <Label color={(status === 'Y' && 'error') || 'success'} >{status === 'N' ? 'Activate' : 'Disabled' }</Label>
-                        </TableCell>
+                        </TableCell> */}
 
                         {/* <TableCell align="right">
                           <IconButton size="large" color="inherit" onClick={handleOpenMenu}>

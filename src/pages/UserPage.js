@@ -138,9 +138,9 @@ export default function UserPage() {
   // };
 
   const handleChangePage = (event, newPage) => {
-    if(listPage <= newPage){
-      setListPage(newPage + 4);
-    }
+    // if(listPage <= newPage){
+    //   setListPage(newPage + 4);
+    // }
     setPage(newPage);
   };
 
@@ -209,7 +209,7 @@ export default function UserPage() {
         </Stack>
 
         <Card>
-          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
+          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} placeholder={"회원명으로 검색하기"} />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>

@@ -13,6 +13,7 @@ import DetailTestPage from './pages/DetailTestPage';
 import ChallengeDetailPage from './pages/ChallengeDetailPage';
 import RequestDetailPage from './pages/RequestDetailPage';
 import RecordPage from "./pages/RecordPage";
+import RecordDetail from "./pages/RecordDetail";
 
 // ----------------------------------------------------------------------
 
@@ -32,7 +33,7 @@ export default function Router() {
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'records', element: <RecordPage /> },
-        { path: 'records/:id', element: <ChallengeDetailPage /> },
+        { path: 'records/:code', element: <RecordDetail/> },
         { path: 'clubs', element: <ReqeustsPage /> },
         { path: 'clubs/:id', element: <RequestDetailPage /> },
       ],
