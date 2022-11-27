@@ -24,12 +24,12 @@ const navConfig = [
   {
     title: '독서 기록 관리',
     path: '/dashboard/records',
-    icon: icon('ic_cart'),
+    icon: icon('ic_blog'),
   },
   {
     title: '독서 모임 관리',
     path: '/dashboard/clubs',
-    icon: icon('ic_blog'),
+    icon: icon('ic_analytics'),
   },
   // { title: 'detail test',
   //   path: 'dashboard/reqeusts/details',
