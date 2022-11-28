@@ -75,10 +75,14 @@ export default function ChallengeDetailPage(){
         <Helmet>
                 <title> RE-MATE | 모임 관리 </title>
         </Helmet>
-        <Typography variant="h4" gutterBottom>
+        <Container>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+            <Typography variant="h4" gutterBottom>
                 모임 상세 조회
             </Typography>
-        <Container fixed >
+            </Stack>
+        </Container>
+        <Container fixed sx={{width:1200}}>
 
             <Stack direction="row" alignItems="center" justifyContent="center" mb={5}>
             <Paper elevation={1} sx={{margin:5}}>
@@ -108,6 +112,7 @@ export default function ChallengeDetailPage(){
                 <Grid xs={8}>
                     <Stack alignItems="center" direction="col"
                         sx={{
+                        
                         margin:2,
                         }}>
                         {/* <img alt="image_" width={600} src={clubInfo.imageUri} /> */}
