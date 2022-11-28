@@ -163,7 +163,7 @@ export default function UserPage() {
   useEffect( () => {
     async function getUser(){
    
-    // await fetch(`http://15.165.28.206:80/v1/members?page=${listPage/4 -1}&size=${realRowsPerPage}`,{
+
     await fetch(`${process.env.REACT_APP_URL}/v1/members?page=${listPage/4 -1}&size=${realRowsPerPage}`,{
       method: "GET",
       headers: {
