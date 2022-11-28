@@ -12,20 +12,39 @@ import { callGETClubDetailAPI } from '../apis/clubs/ClubAPICalls';
 
 function dateFotmat(datetime){
 
-    // const date = datetime.substr(0,11) +""+ datetime.substr(12,17);
-    // return date
-
-    // const year = new Date(datetime).getFullYear;
-    // const month = new Date(datetime).getMonth;
-    // const day = new Date(datetime).getDay;
-    // const hour = new Date(datetime).getHours;
-    // const minute = new Date(datetime).getMinutes;
-
     const dt = new Date(datetime);
-    // const str1 = dt.getFullYear() + '년 ' + (dt.getMonth()+1) + '월 ' + dt.getDate() + '일';
 
     return `${dt.getFullYear()}년 ${dt.getMonth()+1}월 ${dt.getDate()}일 ${dt.getHours()}시`;
 }
+
+function scheduleFormat(List){
+    let schedule = "";
+    for(let i = 0; i < List.length ; i += 1 ){
+        console.log(i)
+        const str = ` ${List[i].dayOfWeek}요일 ${List[i].startTime} ~ ${List[i].endTime} \n`;
+
+        schedule += str;
+    
+    }
+
+    return schedule
+
+
+    // for(const item of List){
+    
+    //     const str = `${item.dayOfWeek}요일 ${item.startTime} ~ ${item.endTime}`;
+    //     console.log(str);
+
+    // }
+
+}
+    // const iteration = (List) => {
+    //     const nameList = List.map((schedule) => <li>{ ` ${schedule.dayOfWeek}요일 ${schedule.startTime} ~ ${schedule.endTime}`}</li>);
+    //     return <ul>{nameList}<ul/>;
+    // }
+
+
+
 
 export default function ChallengeDetailPage(){
     
@@ -47,6 +66,8 @@ export default function ChallengeDetailPage(){
         // dispatch(callGETClubDetailAPI(params.clubId));
 
     },[])
+    const nameList = ( scheduleList ) => { scheduleList.map(schedule => <li>{`${schedule.dayOfWeek}요일 ${schedule.startTime} ~ ${schedule.endTime}`}</li>)};
+    
     return(
         <>
         <Helmet>
@@ -66,12 +87,9 @@ export default function ChallengeDetailPage(){
                         <Typography variant="h5" color="primary" gutterBottom >
                             모임 명 : {clubInfo.clubName}
                         </Typography>
-                        <Typography  variant="subtitle1"> Id </Typography>
-                        <Typography> {clubInfo.clubId} </Typography>
-                        <Typography  variant="subtitle1"> 대상 도서 </Typography>
-                        <Typography> {clubInfo.bookName}</Typography>
-                        <Typography  variant="subtitle1"> 참가 인원 </Typography>
-                        <Typography >{clubInfo.currentNumberOfMemeber} 명</Typography>
+                        <Typography  variant="subtitle1"> {`ID : ${clubInfo.clubId}`} </Typography>
+                        <Typography  variant="subtitle1"> {`대상 도서 : ${clubInfo.bookName}`} </Typography>
+                        <Typography  variant="subtitle1"> {`참가 인원 : ${clubInfo.currentNumberOfMemeber} 명`} </Typography>
                         <Typography  variant="subtitle1"> 모임 소개 </Typography> 
                         <Typography> {clubInfo.clubIntro}</Typography>
                         <Typography variant="subtitle1"> 모집 기간 </Typography>
@@ -80,7 +98,9 @@ export default function ChallengeDetailPage(){
                         <Typography variant="subtitle1"> 모임 기간 </Typography>
                         <Typography> 모임 시작일 : {dateFotmat(clubInfo.startDate)} </Typography>
                         <Typography>모임 종료일 : {dateFotmat(clubInfo.endDate)} </Typography>
-                        <Typography>{/* clubId : {clubInfo.scheduleDTOList[0]} */}</Typography>
+                        <Typography variant="subtitle1"> 회의 일정 </Typography>
+                        <div style={{whiteSpace:'pre-wrap'}}>{clubInfo.scheduleDTOList ? scheduleFormat(clubInfo.scheduleDTOList):""} </div>
+
                     </Stack>
                 </Grid>
                 <Grid xs={4}>
