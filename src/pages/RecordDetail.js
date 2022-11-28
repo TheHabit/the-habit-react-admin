@@ -37,7 +37,7 @@ export default function ChallengeDetailPage(){
         console.log(recordCode);
         async function getDetail(){
        
-        await fetch(`http://127.0.0.1:8080/v1/records/one?recordCode=${recordCode}`,{
+        await fetch(`http://15.165.28.206:80/v1/records/one?recordCode=${recordCode}`,{
           method: "GET",
           headers: {
             'Content-type': 'application/json',
@@ -138,12 +138,14 @@ export default function ChallengeDetailPage(){
                            <Typography component="div" style={{marginTop:"40px"}}>
                                 {`AI 한줄 요약 : ${recordDetails.oneLineReview}`}
                            </Typography>
-                           <Typography component="div" style={{marginTop:"20px"}}>
+                           {recordDetails.reportDate ?
+                           (<Typography component="div" style={{marginTop:"20px"}}>
                                 {`기록한 날 : 
                                 ${ new Date(recordDetails.reportDate).getFullYear()}년 
                                 ${new Date(recordDetails.reportDate).getMonth()}월
                                 ${new Date(recordDetails.reportDate).getDate()}일`}
-                           </Typography>
+                           </Typography>) : null
+                            }
                            <Typography component="div" style={{marginTop:"20px"}}>
                            <Label color={(recordDetails.isDone === 'N' && 'error') || 'success'} >{recordDetails.isDone === 'Y' ? '완독' : '독서 중' }</Label>
                                

@@ -161,7 +161,7 @@ export default function UserPage() {
   useEffect( () => {
     async function getUser(){
    
-    await fetch('http://127.0.0.1:8080/v1/records/all-admin',{
+    await fetch('http://15.165.28.206:80/v1/records/all-admin',{
       method: "GET",
       headers: {
         'Content-type': 'application/json',
@@ -349,9 +349,49 @@ export default function UserPage() {
       </Popover>
     </>
     ) : (
-      <Box sx={{ display: 'flex', ml:87, mt:40 }}>
-        <CircularProgress />
-      </Box>
+      <Container>
+        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+          <Typography variant="h4" gutterBottom>
+            독서 기록 관리
+          </Typography>
+          {/* <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
+            New User
+          </Button> */}
+        </Stack>
+
+        <Card>
+          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} placeholder={"도서명으로 검색하기"} />
+
+
+          <TableContainer sx={{ minWidth: 800, minHeight:300 }}>
+            <Table>
+              {/* <UserListHead
+                order={order}
+                orderBy={orderBy}
+                headLabel={TABLE_HEAD}
+                rowCount={USERLIST.length}
+                numSelected={selected.length}
+                onRequestSort={handleRequestSort}
+                // onSelectAllClick={handleSelectAllClick}
+              /> */}
+              <TableBody>
+                <CircularProgress sx={{ml:70, mt:10}}/>
+              </TableBody>
+            </Table>
+          </TableContainer>
+  
+
+          <TablePagination
+            rowsPerPageOptions={[5]}
+            component="div"
+            count={USERLIST.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Card>
+    </Container>
     )
   );
 }
