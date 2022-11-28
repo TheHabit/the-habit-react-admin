@@ -61,8 +61,6 @@ export default function ChallengeDetailPage(){
     const dispatch = useDispatch();
     // const { temp } = useParams();
     console.log(`파람 확인${clubId}`)
-    
-    const url = process.env.REACT_APP_API_URL;
 
     useEffect(()=>{
         if(localStorage.getItem('token') == null){
@@ -71,7 +69,7 @@ export default function ChallengeDetailPage(){
         }
         // console.log(`clubInfo : ${clubInfo}`);
         console.log(`params clubid : ${params.clubId}`);
-        dispatch(callGETClubDetailAPI(url, clubId));
+        dispatch(callGETClubDetailAPI(clubId));
         // dispatch(callGETClubDetailAPI(params.clubId));
         // dispatch(callGETClubDetailAPI(params.clubId));
 

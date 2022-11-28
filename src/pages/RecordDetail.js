@@ -40,11 +40,11 @@ export default function ChallengeDetailPage(){
             return;
         }
 
-        const url = process.env.REACT_APP_API_URL;
+        const url = process.env.REACT_APP_URL;
         console.log(recordCode);
         async function getDetail(){
         
-        await fetch(`${url}records/one?recordCode=${recordCode}`,{
+        await fetch(`${url}/v1/records/one?recordCode=${recordCode}`,{
           method: "GET",
           headers: {
             'Content-type': 'application/json',
