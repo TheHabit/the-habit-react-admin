@@ -13,9 +13,9 @@ const actions = createActions({
 /* 리듀서 함수 */
 const navigateReducer = handleActions(
     {
-    [SET_PARAM]:(state ,{ payload }) => {
+    [SET_PARAM]:(state , {payload}) => {
         
-        console.log('payload: ', state);
+        console.log('state payload: ', payload);
         
         return payload;
     }

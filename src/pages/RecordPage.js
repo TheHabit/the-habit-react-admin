@@ -308,7 +308,7 @@ export default function UserPage() {
           </Scrollbar>
 
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
+            rowsPerPageOptions={[5]}
             component="div"
             count={USERLIST.length}
             rowsPerPage={rowsPerPage}
