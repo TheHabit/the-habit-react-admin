@@ -7,6 +7,8 @@ import { useParams, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import { callGETClubDetailAPI } from '../apis/clubs/ClubAPICalls';
 
 
@@ -103,12 +105,25 @@ export default function ChallengeDetailPage(){
 
                     </Stack>
                 </Grid>
-                <Grid xs={4}>
+                <Grid xs={8}>
                     <Stack alignItems="center" direction="col"
                         sx={{
                         margin:2,
-                        height: 400}}>
-                        <img alt="image_" width={600} src={clubInfo.imageUri} />
+                        }}>
+                        {/* <img alt="image_" width={600} src={clubInfo.imageUri} /> */}
+                    <CardContent style={{
+                    display:"flex",
+                    gap:"30px"
+                        }} >
+                        {(
+                            <CardMedia
+
+                            component="img"
+                            image={clubInfo.imageUri}
+                            alt="img_"
+                            />
+                        )}
+                    </CardContent>
                     </Stack>
                 </Grid>
             </Grid>
