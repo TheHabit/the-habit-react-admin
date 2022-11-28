@@ -60,10 +60,10 @@ export default function LoginPage() {
 
         {mdUp && (
           <StyledSection>
-            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              당신의 Reading Mate
-            </Typography>
-            <img src="/assets/illustrations/illustration_login.png" alt="login" />
+            {/* <Typography variant="h3" sx={{ px: 5, mb: 5, ml:5 }}>
+              관리자 페이지
+            </Typography> */}
+            <img src="/assets/illustrations/login.png" alt="login" />
             {/* <img src="/assets/illustrations/login.png" alt="login" /> */}
           </StyledSection>
         )}
