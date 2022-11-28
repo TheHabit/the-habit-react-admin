@@ -22,6 +22,9 @@ import {
   IconButton,
   TableContainer,
   TablePagination,
+  Skeleton,
+  Box,
+  CircularProgress
 } from '@mui/material';
 // components
 import Label from '../components/label';
@@ -190,7 +193,7 @@ export default function UserPage() {
   // }
 
   return (
-    USERLIST[0]&& USERLIST[0].code && (
+    USERLIST[0] && USERLIST[0].code ? (
     <>
       <Helmet>
         <title> RE-MATE | 독서 기록 관리 </title>
@@ -345,6 +348,10 @@ export default function UserPage() {
         </MenuItem>
       </Popover>
     </>
+    ) : (
+      <Box sx={{ display: 'flex', ml:87, mt:40 }}>
+        <CircularProgress />
+      </Box>
     )
   );
 }
