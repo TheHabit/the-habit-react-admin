@@ -37,7 +37,7 @@ export default function ChallengeDetailPage(){
         console.log(recordCode);
         async function getDetail(){
        
-        await fetch(`http://127.0.0.1:8080/v1/records/one?recordCode=${recordCode}`,{
+        await fetch(`http://15.165.28.206:80/v1/records/one?recordCode=${recordCode}`,{
           method: "GET",
           headers: {
             'Content-type': 'application/json',
