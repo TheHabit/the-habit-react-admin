@@ -30,7 +30,7 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/user" />, index: true },
-        { path: 'app', element: <DashboardAppPage /> },
+        // { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'records', element: <RecordPage /> },
         { path: 'records/:code', element: <RecordDetail/> },
