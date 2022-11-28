@@ -176,7 +176,9 @@ export default function UserPage() {
     }
 
    
-    await fetch(`${url}members?page=${listPage/4 -1}&size=${realRowsPerPage}`,{
+
+
+    await fetch(`${process.env.REACT_APP_URL}/v1/members?page=${listPage/4 -1}&size=${realRowsPerPage}`,{
       method: "GET",
       headers: {
         'Content-type': 'application/json',

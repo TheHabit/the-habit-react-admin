@@ -120,7 +120,7 @@ export default function ChallengeDetailPage(){
                 <Grid xs={8}>
                     <Stack alignItems="center" direction="col"
                         sx={{
-                        
+                        height:400,
                         margin:2,
                         }}>
                         {/* <img alt="image_" width={600} src={clubInfo.imageUri} /> */}

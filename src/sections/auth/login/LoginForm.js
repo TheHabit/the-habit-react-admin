@@ -1,6 +1,6 @@
+import jwtDecode from 'jwt-decode';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
 
 // @mui
 import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox } from '@mui/material';
@@ -26,7 +26,8 @@ export default function LoginForm() {
     
     console.log(url);
 
-    await fetch(`${url}auths/login`,{
+
+    await fetch(`${process.env.REACT_APP_URL}/v1/auths/login`,{
       method: "POST",
       headers: {
         'Content-type': 'application/json'
