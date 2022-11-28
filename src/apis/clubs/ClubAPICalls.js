@@ -2,8 +2,9 @@ import { GET_CLUBS } from "../../modules/ClubModule";
 import { GET_CLUB_DETAIL } from "../../modules/ClubDetailModule";
 
 export function callGETClubsAPI(url, params){
-    const requestURL = url || 'http://localhost:8080/v1/clubs'; 
-
+  // const requestURL = url || 'http://localhost:8080/v1/clubs'; 
+  const requestURL = url || 'http://15.165.28.206:80/v1/clubs'; 
+  
     return async function getClubs(dispatch, getState) {
 
         console.log("요청확인 api api")

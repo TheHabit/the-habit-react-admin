@@ -3,6 +3,8 @@ import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 // @mui
 import {
   Card,
@@ -32,6 +34,7 @@ import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
+import { callGetRecordsAPI } from '../apis/records/RecordAPICalls'; 
 
 // ----------------------------------------------------------------------
 
@@ -91,7 +94,11 @@ export default function UserPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const [USERLIST, setUserList] = useState([])
+  const dispatch = useDispatch();
+
+  const USERLIST = useSelector((state) => state.recordReducer);
+
+  // const [USERLIST, setUserList] = useState([])
 
 
   // row클릭시 해당 row의 정보
@@ -159,30 +166,31 @@ export default function UserPage() {
   const isNotFound = !filteredUsers.length && !!filterName;
   
   useEffect( () => {
-    async function getUser(){
+    dispatch(callGetRecordsAPI())
+  //   async function getUser(){
    
-    await fetch('http://15.165.28.206:80/v1/records/all-admin',{
-      method: "GET",
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization' :  `Bearer ${localStorage.getItem('token')}`
-    },}).then(response => response.json())
-    .then( res => {
-      console.log(res.data);
-      const records = res.data.map((user) => ({
-        code: user.recordCode,
-        bookName: user.bookName,
-        isbn: user.bookISBN,
-        author: user.bookAuthor,
-        writer: user.name,
-        rating: user.rating
-      }))
-      console.log(records);
-      setUserList(records);
-      console.log(USERLIST);
-    })
-  }
-  getUser();
+  //   await fetch('http://15.165.28.206:80/v1/records/all-admin',{
+  //     method: "GET",
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //       'Authorization' :  `Bearer ${localStorage.getItem('token')}`
+  //   },}).then(response => response.json())
+  //   .then( res => {
+  //     console.log(res.data);
+  //     const records = res.data.map((user) => ({
+  //       code: user.recordCode,
+  //       bookName: user.bookName,
+  //       isbn: user.bookISBN,
+  //       author: user.bookAuthor,
+  //       writer: user.name,
+  //       rating: user.rating
+  //     }))
+  //     console.log(records);
+  //     setUserList(records);
+  //     console.log(USERLIST);
+  //   })
+  // }
+  // getUser();
 
   }, []);
 
