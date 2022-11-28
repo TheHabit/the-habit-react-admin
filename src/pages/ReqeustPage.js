@@ -109,7 +109,7 @@ export default function RequstPage() {
 
   const [selected, setSelected] = useState([]);
 
-  const [orderBy, setOrderBy] = useState('clubName');
+  const [orderBy, setOrderBy] = useState('');
 
   const [filterName, setFilterName] = useState('');
 
