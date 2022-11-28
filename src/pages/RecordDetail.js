@@ -31,13 +31,20 @@ export default function ChallengeDetailPage(){
 
     const [recordDetails, setRecordDetails] = useState({});
 
+    const navigate = useNavigate();
+
 
     useEffect( () => {
+        if(localStorage.getItem('token') == null){
+            navigate('/login');
+            return;
+        }
 
+        const url = process.env.REACT_APP_API_URL;
         console.log(recordCode);
         async function getDetail(){
-       
-        await fetch(`http://15.165.28.206:80/v1/records/one?recordCode=${recordCode}`,{
+        
+        await fetch(`${url}records/one?recordCode=${recordCode}`,{
           method: "GET",
           headers: {
             'Content-type': 'application/json',

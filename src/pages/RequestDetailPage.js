@@ -3,7 +3,7 @@ import { Container, Stack, Typography } from '@mui/material';
 // import {useLocation} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -49,6 +49,8 @@ function scheduleFormat(List){
 
 
 export default function ChallengeDetailPage(){
+
+    const navigate = useNavigate();
     
     const location = useLocation();
 
@@ -59,11 +61,17 @@ export default function ChallengeDetailPage(){
     const dispatch = useDispatch();
     // const { temp } = useParams();
     console.log(`파람 확인${clubId}`)
+    
+    const url = process.env.REACT_APP_API_URL;
 
     useEffect(()=>{
+        if(localStorage.getItem('token') == null){
+            navigate('/login');
+            return;
+        }
         // console.log(`clubInfo : ${clubInfo}`);
         console.log(`params clubid : ${params.clubId}`);
-        dispatch(callGETClubDetailAPI(clubId));
+        dispatch(callGETClubDetailAPI(url, clubId));
         // dispatch(callGETClubDetailAPI(params.clubId));
         // dispatch(callGETClubDetailAPI(params.clubId));
 

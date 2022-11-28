@@ -22,8 +22,11 @@ export default function LoginForm() {
 
   const handleClick = async () => {
     let isSuccess = "";
+    const url = process.env.REACT_APP_URL;
+    
+    console.log(url);
 
-    await fetch('http://15.165.28.206:80/v1/auths/login',{
+    await fetch(`${url}auths/login`,{
       method: "POST",
       headers: {
         'Content-type': 'application/json'

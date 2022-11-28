@@ -69,7 +69,7 @@ export default function LoginPage() {
             {/* <Typography variant="h3" sx={{ px: 5 }}>
               Read Together, Read Mate
             </Typography> */}
-            <img src="/assets/illustrations/login.png" alt="login"/>
+            <img src="/assets/illustrations/login.png" alt="login" style={{marginLeft:170, width:400, height:850}}/>
             {/* <img src="/assets/illustrations/login.png" alt="login" /> */}
           </StyledSection>
         )}

@@ -95,8 +95,14 @@ export default function RequstPage() {
   
   const requestDetail = useSelector((state) => state.navigateReducer);
 
+  const url = process.env.dev.REACT_APP_API_URL;
+  console.log(url);
   useEffect(()=>{
-    dispatch(callGETClubsAPI())
+    if(localStorage.getItem('token') == null){
+      navigate('/login');
+      return;
+    }
+    dispatch(callGETClubsAPI(url))
     console.log(`test ${USERLIST}`);
   }
   ,[])
