@@ -94,7 +94,7 @@ export default function ChallengeDetailPage(){
             <Paper elevation={1} sx={{margin:5}}>
 
             <Grid container spacing={3} columns={16}>
-                <Grid xs={8} sx={{}}>
+                <Grid xs={8}>
                     <Stack spacing={1} sx={{mt:2, margin:2}}>
                         <Typography variant="h5" color="primary" gutterBottom >
                             모임 명 : {clubInfo.clubName}
@@ -104,25 +104,26 @@ export default function ChallengeDetailPage(){
                         <Typography  variant="subtitle1"> {`참가 인원 : ${clubInfo.currentNumberOfMemeber} 명`} </Typography>
                         <Typography  variant="subtitle1"> 모임 소개 </Typography> 
                         <Typography> {clubInfo.clubIntro}</Typography>
-                        <Typography variant="subtitle1"> 모집 기간 </Typography>
+                        <Typography variant="subtitle1" > 모집 기간 </Typography>
                         <Typography> 모집 시작일 : {dateFotmat(clubInfo.recruitStartDate)} </Typography>
                         <Typography> 모집 종료일 : {dateFotmat(clubInfo.recruitEndDate)} </Typography>
                         <Typography variant="subtitle1"> 모임 기간 </Typography>
                         <Typography> 모임 시작일 : {dateFotmat(clubInfo.startDate)} </Typography>
                         <Typography>모임 종료일 : {dateFotmat(clubInfo.endDate)} </Typography>
                         <Typography variant="subtitle1"> 회의 일정 </Typography>
-                        <div style={{whiteSpace:'pre-wrap'}}>{clubInfo.scheduleDTOList ? scheduleFormat(clubInfo.scheduleDTOList):""} </div>
+                        <div style={{whiteSpace:'pre-wrap', width:500}}>{clubInfo.scheduleDTOList ? scheduleFormat(clubInfo.scheduleDTOList):""} </div>
 
                     </Stack>
                 </Grid>
                 <Grid xs={8}>
-                    <Stack alignItems="center" direction="col"
+                    <Stack alignItems="center" direction="col" verticalAlign="center"
                         sx={{
-                        height:400,
                         margin:2,
+                        height:500,
+                        verticalAlign:"middle"
                         }}>
-                        {/* <img alt="image_" width={600} src={clubInfo.imageUri} /> */}
-                    <CardContent style={{
+                        <img alt="image_"  src={clubInfo.imageUri} />
+                    {/* <CardContent style={{
                     display:"flex",
                     gap:"30px"
                         }} >
@@ -134,7 +135,7 @@ export default function ChallengeDetailPage(){
                             alt="img_"
                             />
                         )}
-                    </CardContent>
+                    </CardContent> */}
                     </Stack>
                 </Grid>
             </Grid>
