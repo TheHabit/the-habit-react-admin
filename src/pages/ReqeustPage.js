@@ -265,7 +265,7 @@ export default function RequstPage() {
                         {/* <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>/// */}
 
                         <TableCell align="left">
-                          <Label color={(status === 'banned' && 'error') || 'success'}>{sentenceCase(status)}</Label>
+                          <Label color={(status === 'END' && 'error') || 'success'}>{sentenceCase(status)}</Label>
                         </TableCell>
 
                         <TableCell align="right">
