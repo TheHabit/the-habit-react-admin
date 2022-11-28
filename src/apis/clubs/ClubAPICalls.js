@@ -23,7 +23,8 @@ export function callGETClubsAPI(url, params){
 }
 
 export function callGETClubDetailAPI(params){
-  const requestURL = `http://localhost:8080/v1/clubs?clubId=${params}`; 
+  // const requestURL = `http://localhost:8080/v1/clubs?clubId=${params}`; 
+  const requestURL = `http://15.165.28.206:80/v1/clubs?clubId=${params}`; 
 
   return async function getClubDetail(dispatch, getState) {
 

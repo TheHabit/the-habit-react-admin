@@ -72,7 +72,7 @@ export default function ChallengeDetailPage(){
       }, []);
 
     return(
-        recordDetails.rating && (
+        recordDetails.bookName && (
         <>
         <Helmet>
                 <title> RE-MATE | 독서 기록 상세 </title>
