@@ -1,7 +1,9 @@
 import { GET_RECORDS } from "../../modules/RecordModule"
 
 export function callGetRecordsAPI(url, params){
-    const requestURL = url || 'http://15.165.28.206:80/v1/records/all-admin'; 
+    // const requestURL = url || 'http://15.165.28.206:80/v1/records/all-admin'; 
+    // const requestURL = url || 'http://127.0.0.1:8080/v1/records/all-admin'; 
+    const requestURL = url || `${process.env.REACT_APP_URL}/v1/records/all-admin`; 
 
     return async function getRecords(dispatch, getState) {
 
@@ -24,7 +26,6 @@ export function callGetRecordsAPI(url, params){
               rating: user.rating
             }))
         })
-    
         dispatch({type:GET_RECORDS, payload: records });
     }
 }
