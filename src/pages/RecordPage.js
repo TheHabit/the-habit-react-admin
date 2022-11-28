@@ -164,9 +164,16 @@ export default function UserPage() {
   const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
 
   const isNotFound = !filteredUsers.length && !!filterName;
-  
+
+  const url = process.env.REACT_APP_API_URL;
+
   useEffect( () => {
-    dispatch(callGetRecordsAPI())
+    if(localStorage.getItem('token') == null){
+      navigate('/login');
+      return;
+    }
+    
+    dispatch(callGetRecordsAPI(url))
   //   async function getUser(){
    
   //   await fetch('http://15.165.28.206:80/v1/records/all-admin',{

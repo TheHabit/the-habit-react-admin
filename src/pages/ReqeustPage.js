@@ -96,6 +96,10 @@ export default function RequstPage() {
   const requestDetail = useSelector((state) => state.navigateReducer);
 
   useEffect(()=>{
+    if(localStorage.getItem('token') == null){
+      navigate('/login');
+      return;
+    }
     dispatch(callGETClubsAPI())
     console.log(`test ${USERLIST}`);
   }
@@ -198,7 +202,8 @@ export default function RequstPage() {
         </Stack>
 
         <Card>
-          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
+          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} placeholder={"모임명으로 검색하기"} />
+
           <Scrollbar>
             <TableContainer sx={{ minWidth: 1200 }}>
               <Table>

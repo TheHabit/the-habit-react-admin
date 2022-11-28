@@ -1,5 +1,6 @@
 import { GET_RECORDS } from "../../modules/RecordModule"
 
+
 export function callGetRecordsAPI(url, params){
     // const requestURL = url || 'http://127.0.0.1:8080/v1/records/all-admin'; 
     const requestURL = url || `${process.env.REACT_APP_URL}/v1/records/all-admin`; 

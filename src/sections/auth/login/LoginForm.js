@@ -22,6 +22,10 @@ export default function LoginForm() {
 
   const handleClick = async () => {
     let isSuccess = "";
+    const url = process.env.REACT_APP_URL;
+    
+    console.log(url);
+
 
     await fetch(`${process.env.REACT_APP_URL}/v1/auths/login`,{
       method: "POST",

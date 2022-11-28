@@ -2,6 +2,7 @@ import { GET_CLUBS } from "../../modules/ClubModule";
 import { GET_CLUB_DETAIL } from "../../modules/ClubDetailModule";
 
 export function callGETClubsAPI(url, params){
+
   const requestURL = url || `${process.env.REACT_APP_URL}/v1/clubs`; 
   console.log(`requestURL${requestURL}`)
 
@@ -21,6 +22,7 @@ export function callGETClubsAPI(url, params){
         dispatch({type:GET_CLUBS, payload: result.data });
     }
 }
+
 
 export function callGETClubDetailAPI(params){
   const requestURL = `${process.env.REACT_APP_URL}/v1/clubs?clubId=${params}`; 

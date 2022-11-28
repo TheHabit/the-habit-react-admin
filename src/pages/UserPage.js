@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 // @mui
 import {
   Card,
@@ -97,6 +98,7 @@ export default function UserPage() {
 
   const [listPage, setListPage] = useState(4);
   
+  const navigate = useNavigate();
 
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
@@ -159,10 +161,22 @@ export default function UserPage() {
   const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
 
   const isNotFound = !filteredUsers.length && !!filterName;
-  
+  const url = process.env
+  console.log(url);
+
   useEffect( () => {
+
     async function getUser(){
+
+    console.log(url);
+    
+    if(localStorage.getItem('token') == null){
+      navigate('/login');
+      return;
+    }
+
    
+
 
     await fetch(`${process.env.REACT_APP_URL}/v1/members?page=${listPage/4 -1}&size=${realRowsPerPage}`,{
       method: "GET",

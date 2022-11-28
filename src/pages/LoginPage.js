@@ -20,7 +20,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 
 const StyledSection = styled('div')(({ theme }) => ({
   width: '100%',
-  maxWidth: 480,
+  maxWidth: 800,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -57,13 +57,19 @@ export default function LoginPage() {
             left: { xs: 16, sm: 24, md: 40 },
           }}
         />
+      
+        {/* <StyledSection>
+            <Typography variant="h3" sx={{ px: 5, mb: 5, ml:5 }}>
+              관리자 페이지
+            </Typography>
+        </StyledSection> */}
 
         {mdUp && (
           <StyledSection>
-            {/* <Typography variant="h3" sx={{ px: 5, mb: 5, ml:5 }}>
-              관리자 페이지
+            {/* <Typography variant="h3" sx={{ px: 5 }}>
+              Read Together, Read Mate
             </Typography> */}
-            <img src="/assets/illustrations/login.png" alt="login" />
+            <img src="/assets/illustrations/login.png" alt="login" style={{marginLeft:170, width:400, height:850}}/>
             {/* <img src="/assets/illustrations/login.png" alt="login" /> */}
           </StyledSection>
         )}
