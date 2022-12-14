@@ -6,7 +6,6 @@ Re-Mate Admin 페이지는 Re-Mate의 회원, 독서기록, 독서모임을 관�
 <br>
 
 ## ✨주요 기능
----
 - 회원 조회
 - 독서기록 조회
 - 독서모임 조회
@@ -14,20 +13,17 @@ Re-Mate Admin 페이지는 Re-Mate의 회원, 독서기록, 독서모임을 관�
 <br>
 
 ## 🎆프로젝트 목표
----
 - API 서버와 React 서버 연동
 - AWS를 활용한 React 서버 배포 및 DNS 연결
 
 <br>
 
 ## ✍️아키텍처 
----
 ![Group 26](https://user-images.githubusercontent.com/75306582/207519574-9167431c-8d1d-46db-943f-ee9bd125392f.png)
 
 <br>
 
 ## 📰주요 실행 화면
----
 ![re-mate 관리자 페이지](https://user-images.githubusercontent.com/75306582/207522577-869bc6db-c606-4a6f-8f10-5f9025b7c899.png)
 ![re-mate 회원관리](https://user-images.githubusercontent.com/75306582/207522448-abe26dbc-2c4e-4938-a6b0-fab565b9fc10.png)
 ![re-mate 독서기록](https://user-images.githubusercontent.com/75306582/207522458-eced7e67-08db-4b64-a554-b96d4237c279.png)
