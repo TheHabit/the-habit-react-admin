@@ -30,7 +30,7 @@ Re-Mate Admin 페이지는 Re-Mate의 회원, 독서기록, 독서모임을 관�
 ![re-mate 독서기록 상세조회](https://user-images.githubusercontent.com/75306582/207522479-2cc1642c-b609-4ebe-8434-e9e0d4082248.png)
 ![re-mate 독서모임](https://user-images.githubusercontent.com/75306582/207522486-b4b2e6f7-5670-4b34-821d-4858eab07f9b.png)
 ![re-mate 독서모임 상세조회 1](https://user-images.githubusercontent.com/75306582/207522500-b88e6ca3-c3bb-4ecd-a951-393c77b34558.png)
-
+#### 실행 화면에서 제시된 데이터는 모두 더미 데이터로, 실제 유저의 데이터가 아님을 말씀드립니다.
 <br>
 
 ## ✅ 브랜치 전략
